@@ -1,15 +1,23 @@
-export default function Hero() {
+export default function Hero({ garderie }) {
   return (
     <header id="accueil" className="hero py-5">
       <div className="container">
         <div className="row align-items-center g-4">
           <div className="col-lg-6 text-center text-lg-start">
-            <h1 className="display-4 fw-bold">Un lieu sûr et joyeux pour vos enfants</h1>
-            <p className="lead my-4">
-              Chez Les Petits Anges, une équipe bienveillante accompagne chaque enfant
-              dans son éveil, ses jeux et ses premiers apprentissages, dans un cadre
-              chaleureux et sécurisé.
-            </p>
+            {garderie ? (
+              <>
+                <h1 className="display-4 fw-bold">{garderie.slogan}</h1>
+                <p className="lead my-4">{garderie.description}</p>
+                <p className="text-muted mb-4">
+                  📍 {garderie.adresse} · 🕒 {garderie.horaires}
+                </p>
+              </>
+            ) : (
+              <div className="alert alert-warning my-4">
+                Impossible de charger les informations de la garderie. Vérifiez que le
+                backend est démarré.
+              </div>
+            )}
             <a href="#services" className="btn btn-warning btn-lg px-4">
               Découvrir nos services
             </a>
